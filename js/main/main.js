@@ -1,5 +1,7 @@
 import dataObject from "../utils/dataObject.js"
+import getGoodsCategory from "./getGoodsCategory.js"
 window.onload = () => {
+    getGoodsCategory('200', '1')
     let orders = {}
     fetch(dataObject.getOrdersLink, {
     }).then(response => response.json())
@@ -43,5 +45,6 @@ window.onload = () => {
 
         })
     .catch(error => console.error(error))
+
 }
 
