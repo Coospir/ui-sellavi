@@ -8,27 +8,31 @@ window.onload = () => {
                 fetch(dataObject.getOrderDataByID + `?id=${item.order_id}`, {
                 }).then(response => response.json())
                     .then((data) => {
-                        if(item.order_id === data.response.order_id) {
+                        let response = data.response
+                        if(item.order_id === response.order_id) {
 
                             orders = {
-                                "id": data.response.order_id,
-                                "lastname": data.response.lastname,
-                                "firstname": data.response.firstname,
-                                "products": data.response.products,
-                                "cost": data.response.total
+                                "id": response.order_id,
+                                "lastname": response.lastname,
+                                "firstname": response.firstname,
+                                "products": response.products,
+                                "cost": response.total
                             }
 
+                            let productsHTML = ``
+                            for (const [key, value] of Object.entries(orders.products)) {
+                                productsHTML += `<p>- ${value.name}</p>`;
+                            }
                             document.querySelectorAll(".cards").forEach((item, index) => {
                                 item.insertAdjacentHTML("afterbegin", `
                                 <div class="card_item">
                                     <h3 class="title">Order №${orders.id}</h3>
-                                    <div class="buyer">Buyer: ${orders.lastname} ${orders.firstname}</div>
-                                    <div id=${orders.id} class="products">${orders.products}</div>
-                                    <div class="price">Price: ${orders.cost} rub.</div>
+                                    <div class="buyer"><p>Buyer: ${orders.lastname} ${orders.firstname}</p></div>
+                                    <div id=${orders.id} class="products"><p>Products: ${productsHTML}</p></div>
+                                    <div class="price"><p>Total price: ${orders.cost} rub.</p></div>
                                 </div>
                             `)
                             })
-                            console.log(Array.from(orders.products))
                         }
 
                     })
