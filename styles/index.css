@@ -43,7 +43,13 @@ a {
     cursor: pointer;
 }
 
+.page-title {
+    padding: 2%;
+}
 
+.count-orders {
+    color: #c9c9c9;
+}
 .cards {
     display: flex;
     flex-direction: row;

@@ -10,7 +10,6 @@ window.onload = () => {
                     .then((data) => {
                         let response = data.response
                         if(item.order_id === response.order_id) {
-
                             orders = {
                                 "id": response.order_id,
                                 "lastname": response.lastname,
@@ -19,8 +18,11 @@ window.onload = () => {
                                 "cost": response.total
                             }
 
+                            console.log(index)
+                            //console.log(orders)
                             let productsHTML = ``
                             for (const [key, value] of Object.entries(orders.products)) {
+
                                 productsHTML += `<p>- ${value.name}</p>`;
                             }
                             document.querySelectorAll(".cards").forEach((item, index) => {
@@ -33,10 +35,12 @@ window.onload = () => {
                                 </div>
                             `)
                             })
+                            //document.querySelector(".count-orders").insertAdjacentHTML("afterbegin", Object.keys(orders).length)
                         }
 
                     })
             })
+
         })
     .catch(error => console.error(error))
 }
