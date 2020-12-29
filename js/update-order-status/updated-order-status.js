@@ -1,15 +1,18 @@
-let getIDs = (orderID, element) => {
-    console.log(orderID, element.selectedIndex)
+
+let getIDs = (orderID) => {
+    let newStatusID = document.querySelector(`.search${orderID}`).value
+
+    updateOrderStatus(orderID, newStatusID)
     //let e = document.getElementById("statuses")
     /*let statusID = e.options[e.selectedIndex].value
     updateOrderStatus(orderID, statusID)*/
 }
 
-let updateOrderStatus = (statusID, orderID) => {
-    console.log(statusID, orderID)
-    statusID = null
+let updateOrderStatus = (orderID, newStatusID) => {
+    console.log(orderID, newStatusID)
+    newStatusID = null
     orderID = null
-    //fetch('https://ru.sellavi.com/gateway/order/' + orderID + '/update_status', {}).then(response => response.json())
+    fetch('https://ru.sellavi.com/gateway/order/' + orderID + '/update_status', {}).then(response => response.json())
 }
 
 

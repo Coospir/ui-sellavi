@@ -44,11 +44,11 @@ window.onload = () => {
                                     <td>${orders.cost} rub.</td>
                                     <td>
                                             <div class="edit_block">
-                                                <h5>Edit order</h5>
-                                                <h6>Order status: ${orders.status}</h6>
+                                                <h5>Изменение статуса</h5>
+                                                <h6>Статус заказа: ${orders.status}</h6>
                                                 <div class="btn_group">
-                                                    <label>Type statusss: </label><input class="search" name="search_input" />
-                                                    <button class="accept_btn" onclick="getIDs(${orders.id})">Accept status</button>
+                                                    <input class="search${orders.id}" name="search_input" placeholder="Введите статус" type="number"/>
+                                                    <button class="accept_btn" onclick="getIDs(${orders.id})">Подтвердить</button>
                                                 </div>
                                             </div>
 
@@ -59,7 +59,7 @@ window.onload = () => {
                         }
                     })
             })
-            document.querySelector(".count-orders").insertAdjacentHTML("afterbegin", "Count orders for now: " + countOrder)
+            document.querySelector(".count-orders").insertAdjacentHTML("afterbegin", "Количество заказов: " + countOrder)
         })
         .catch(error => console.error(error))
 }
